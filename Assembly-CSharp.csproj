@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
+    <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
     <None Include="Assets\Resources\BillingMode.json" />
+    <None Include="Assets\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
@@ -804,6 +806,9 @@
     <Reference Include="Unity.Searcher.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Searcher.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Config.Runtime">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Config.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.Purchasing">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\UnityEngine.Purchasing.dll</HintPath>
     </Reference>
@@ -867,6 +872,9 @@
     <Reference Include="Unity.Rendering.LightTransport.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Rendering.LightTransport.Editor.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Editor">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEngine.XR.LegacyInputHelpers">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\UnityEngine.XR.LegacyInputHelpers.dll</HintPath>
     </Reference>
@@ -884,6 +892,9 @@
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityStub">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityStub.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Runtime">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
@@ -905,6 +916,9 @@
     </Reference>
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
@@ -933,6 +947,9 @@
     <Reference Include="Unity.Mathematics">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
     </Reference>
@@ -944,6 +961,9 @@
     </Reference>
     <Reference Include="Analytics">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.VSCode.Editor">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
