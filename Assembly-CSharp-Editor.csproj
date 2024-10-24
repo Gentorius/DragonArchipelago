@@ -950,11 +950,11 @@
     <Reference Include="Unity.VisualEffectGraph.Runtime">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualEffectGraph.Runtime.dll</HintPath>
     </Reference>
+    <Reference Include="Unity.VisualEffectGraph.Editor">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
+    </Reference>
     <Reference Include="Unity.Collections.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Collections.Editor.dll</HintPath>
-    </Reference>
-    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="Unity.VisualScripting.Shared.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualScripting.Shared.Editor.dll</HintPath>
@@ -971,8 +971,8 @@
     <Reference Include="Unity.AI.Navigation.Updater">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.AI.Navigation.Updater.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VisualEffectGraph.Editor">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualEffectGraph.Editor.dll</HintPath>
+    <Reference Include="Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.ShaderGraph.ShaderGraphLibrary.dll</HintPath>
     </Reference>
     <Reference Include="UnityEngine.Purchasing.SecurityCore">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\UnityEngine.Purchasing.SecurityCore.dll</HintPath>
@@ -998,11 +998,11 @@
     <Reference Include="Unity.AI.Navigation.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.AI.Navigation.Editor.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.Mathematics">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.RenderPipelines.HighDefinition.Runtime">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.HighDefinition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Unity.Mathematics">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.Mathematics.dll</HintPath>
     </Reference>
     <Reference Include="Unity.RenderPipelines.Core.Editor">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.RenderPipelines.Core.Editor.dll</HintPath>
