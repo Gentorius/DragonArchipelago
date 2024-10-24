@@ -46,10 +46,14 @@
     <Analyzer Include="C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Tools\Unity.SourceGenerators\Unity.UIToolkit.SourceGenerator.dll" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\TutorialInfo\Scripts\Readme.cs" />
-    <None Include="Assets\TerrainSampleAssets\ThirdPartyNotices.txt" />
+    <Compile Include="Assets\UnityDefaultResources\TutorialInfo\Scripts\Readme.cs" />
+    <Compile Include="Assets\Scripts\Bootstrap\Bootstrap.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />
+    <None Include="Assets\Import\TerrainSampleAssets\ThirdPartyNotices.txt" />
     <None Include="Assets\Resources\BillingMode.json" />
-    <None Include="Assets\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
+    <None Include="Assets\UnityDefaultResources\Resources\BillingMode.json" />
+    <None Include="Assets\Import\TerrainSampleAssets\ShaderGraphs\CustomFunctions\CustomLighting.hlsl" />
     <Reference Include="UnityEngine">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
