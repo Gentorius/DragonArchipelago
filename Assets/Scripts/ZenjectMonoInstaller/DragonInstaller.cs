@@ -7,7 +7,7 @@ namespace ZenjectMonoInstaller
     {
         public override void InstallBindings()
         {
-            Container.Bind<IPlayerController>().To<PlayerController>().AsSingle();
+            Container.Bind<IPlayerController>().To<PlayerController>().AsSingle().NonLazy();
         }
     }
 }

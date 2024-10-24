@@ -475,20 +475,8 @@
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\PackageCache\com.unity.analytics\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
-    </Reference>
     <Reference Include="Zenject-usage">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
-    </Reference>
-    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
     </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\PlaybackEngines\MacStandaloneSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
