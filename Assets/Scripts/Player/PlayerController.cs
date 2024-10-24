@@ -1,6 +1,11 @@
 namespace Player
 {
-    public class PlayerController
+    public class PlayerController : IPlayerController
+    {
+        
+    }
+    
+    public interface IPlayerController
     {
         
     }
