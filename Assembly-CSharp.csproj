@@ -426,6 +426,21 @@
     <Reference Include="Unity.Analytics.StandardEvents">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\PackageCache\com.unity.analytics\AnalyticsStandardEvents\Unity.Analytics.StandardEvents.dll</HintPath>
     </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Rocks">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Rocks.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Pdb">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Pdb.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject-usage">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\Source\Usage\Zenject-usage.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject.ReflectionBaking.Mono.Cecil.Mdb">
+      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Assets\Plugins\Zenject\OptionalExtras\ReflectionBaking\Lib\Zenject.ReflectionBaking.Mono.Cecil.Mdb.dll</HintPath>
+    </Reference>
     <Reference Include="UnityEditor.iOS.Extensions.Xcode">
       <HintPath>C:\Program Files\Unity\Hub\Editor\6000.0.23f1\Editor\Data\PlaybackEngines\MacStandaloneSupport\UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
     </Reference>
@@ -966,9 +981,6 @@
     <Reference Include="Analytics">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Analytics.dll</HintPath>
     </Reference>
-    <Reference Include="Unity.VSCode.Editor">
-      <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VSCode.Editor.dll</HintPath>
-    </Reference>
     <Reference Include="Unity.VisualScripting.State">
       <HintPath>C:\Users\gento\OneDrive\Documents\Projects\DragonArchipelago\Library\ScriptAssemblies\Unity.VisualScripting.State.dll</HintPath>
     </Reference>
@@ -1022,6 +1034,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="Zenject-ReflectionBaking-Editor.csproj">
+      <Project>{c131bba3-f507-d371-cd90-dfb4886a70e5}</Project>
+      <Name>Zenject-ReflectionBaking-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-Editor.csproj">
+      <Project>{58fb7bec-2c9e-98c2-d52e-7d989af3f5a7}</Project>
+      <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject-PoolMonitor-Editor.csproj">
+      <Project>{4bf8c8c2-bca6-5f82-5809-6a7e0b08d0bc}</Project>
+      <Name>Zenject-PoolMonitor-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="Zenject.csproj">
+      <Project>{e30e92f1-3342-f76b-3f6c-9d80cbf4a357}</Project>
+      <Name>Zenject</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
