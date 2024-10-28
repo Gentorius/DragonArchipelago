@@ -2,14 +2,13 @@ namespace Player
 {
     public class PlayerInfo
     {
-        readonly int _id;
-        string _nickname;
-        
+        public int ID { get; }
+        public string Nickname => $"Player_{ID}";
+
         public PlayerInfo()
         {
             var random = new System.Random();
-            _id = random.Next(0, 1000);
-            _nickname = $"Player_{_id}";
+            ID = random.Next(0, 1000);
         }
     }
 }

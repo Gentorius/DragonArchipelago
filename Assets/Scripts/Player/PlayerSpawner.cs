@@ -1,25 +1,26 @@
 using ScriptableObjects;
 using UnityEngine;
+using Zenject;
 
 namespace Player
 {
     public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
     {
-        PlayerPrefabsAsset _playerPrefabsAsset;
-        
-        public PlayerSpawner(PlayerPrefabsAsset playerPrefabsAsset)
+        [Inject]
+        readonly PlayerPrefabsAsset _playerPrefabsAsset;
+
+        public PlayerCharacter SpawnPlayer(PlayerInfo playerInfo)
         {
-            _playerPrefabsAsset = playerPrefabsAsset;
-        }
-        
-        public void SpawnPlayer(PlayerInfo playerInfo)
-        {
-            
+            var playerPrefab = _playerPrefabsAsset.GetRandomPlayerPrefab();
+            var playerCharacter = playerPrefab.GetComponent<PlayerCharacter>();
+            playerCharacter.Initialize(playerInfo);
+            Instantiate(playerPrefab, transform.position, Quaternion.identity);
+            return playerCharacter;
         }
     }
 
     public interface IPlayerSpawner
     {
-        public void SpawnPlayer(PlayerInfo playerInfo);
+        public PlayerCharacter SpawnPlayer(PlayerInfo playerInfo);
     }
 }
