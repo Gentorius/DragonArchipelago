@@ -1082,9 +1082,29 @@
       <Project>{ef47d6d6-b9f4-0388-45db-a789987f3b16}</Project>
       <Name>Assembly-CSharp</Name>
     </ProjectReference>
+    <ProjectReference Include="UniTask.Linq.csproj">
+      <Project>{caaedeef-15b2-c87b-fa1e-8c114b602873}</Project>
+      <Name>UniTask.Linq</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.csproj">
+      <Project>{baa2f9f1-28dc-8399-1edd-43c3848d0442}</Project>
+      <Name>UniTask</Name>
+    </ProjectReference>
     <ProjectReference Include="Zenject-Editor.csproj">
       <Project>{58fb7bec-2c9e-98c2-d52e-7d989af3f5a7}</Project>
       <Name>Zenject-Editor</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.Addressables.csproj">
+      <Project>{ae131307-6526-78b4-e460-b80335d6a854}</Project>
+      <Name>UniTask.Addressables</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.DOTween.csproj">
+      <Project>{615e2190-7d4f-30a1-cad8-dff9ded86970}</Project>
+      <Name>UniTask.DOTween</Name>
+    </ProjectReference>
+    <ProjectReference Include="UniTask.TextMeshPro.csproj">
+      <Project>{52153a47-9320-d43b-4ee6-9fe4ede655dd}</Project>
+      <Name>UniTask.TextMeshPro</Name>
     </ProjectReference>
     <ProjectReference Include="Zenject.csproj">
       <Project>{e30e92f1-3342-f76b-3f6c-9d80cbf4a357}</Project>
