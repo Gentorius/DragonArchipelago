@@ -9,7 +9,7 @@ namespace Player
         [Inject]
         readonly PlayerPrefabsAsset _playerPrefabsAsset;
 
-        public PlayerCharacter SpawnPlayer(PlayerInfo playerInfo)
+        public IPlayerCharacter SpawnPlayer(PlayerInfo playerInfo)
         {
             var playerPrefab = _playerPrefabsAsset.GetRandomPlayerPrefab();
             var playerCharacter = playerPrefab.GetComponent<PlayerCharacter>();
@@ -21,6 +21,6 @@ namespace Player
 
     public interface IPlayerSpawner
     {
-        public PlayerCharacter SpawnPlayer(PlayerInfo playerInfo);
+        public IPlayerCharacter SpawnPlayer(PlayerInfo playerInfo);
     }
 }
