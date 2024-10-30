@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -34,10 +35,14 @@ namespace Player
             _lookAction.started += _ => Look();
         }
         
-        void Move()
+        async UniTask Move()
         {
-            var moveValue = _moveAction.ReadValue<Vector2>();
-            _playerCharacter.Move(moveValue);
+            while (_moveAction.IsPressed())
+            {
+                var moveValue = _moveAction.ReadValue<Vector2>();
+                _playerCharacter.Move(moveValue);
+                await UniTask.NextFrame();
+            }
         }
         
         void Jump()

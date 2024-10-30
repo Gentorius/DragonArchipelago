@@ -12,9 +12,9 @@ namespace Player
         public IPlayerCharacter SpawnPlayer(PlayerInfo playerInfo)
         {
             var playerPrefab = _playerPrefabsAsset.GetRandomPlayerPrefab();
-            var playerCharacter = playerPrefab.GetComponent<PlayerCharacter>();
+            var characterInScene = Instantiate(playerPrefab, transform.position, Quaternion.identity);
+            var playerCharacter = characterInScene.GetComponent<PlayerCharacter>();
             playerCharacter.Initialize(playerInfo);
-            Instantiate(playerPrefab, transform.position, Quaternion.identity);
             return playerCharacter;
         }
     }

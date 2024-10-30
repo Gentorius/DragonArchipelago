@@ -14,23 +14,25 @@ namespace Player
 
     public class PlayerCharacter : MonoBehaviour, IPlayerCharacter
     {
-        int _id;
         string _nickname;
         
+        [SerializeField]
+        Camera _camera;
+
         public void Initialize(PlayerInfo playerInfo)
         {
-            _id = playerInfo.ID;
             _nickname = playerInfo.Nickname;
         }
         
         public void Move(Vector2 moveValue)
         {
-            Debug.Log($"{_nickname} is moving with value {moveValue}");
+            var newPosition = transform.position + new Vector3(moveValue.x, 0, moveValue.y);
+            gameObject.transform.position = newPosition;
         }
         
         public void Jump()
         {
-            Debug.Log($"{_nickname} is jumping");
+            
         }
         
         public void Attack()
@@ -45,7 +47,8 @@ namespace Player
         
         public void Look(Vector2 lookValue)
         {
-            Debug.Log($"{_nickname} is looking with value {lookValue}");
+            
+            Debug.Log($"{_nickname} is looking");
         }
     }
 }
