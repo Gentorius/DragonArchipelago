@@ -17,7 +17,10 @@ namespace Player
         string _nickname;
         
         [SerializeField]
-        Camera _camera;
+        GameObject _cameraRig;
+        [SerializeField]
+        Rigidbody _rigidbody;
+        
 
         public void Initialize(PlayerInfo playerInfo)
         {
@@ -26,13 +29,16 @@ namespace Player
         
         public void Move(Vector2 moveValue)
         {
-            var newPosition = transform.position + new Vector3(moveValue.x, 0, moveValue.y);
-            gameObject.transform.position = newPosition;
+            transform.forward = _cameraRig.transform.forward;
+            transform.right = _cameraRig.transform.right;
+            
+            var moveVector = new Vector3(moveValue.x, 0, moveValue.y);
+            _rigidbody.transform.Translate(moveVector);
         }
         
         public void Jump()
         {
-            
+            Debug.Log($"{_nickname} is jumping");
         }
         
         public void Attack()
@@ -47,8 +53,7 @@ namespace Player
         
         public void Look(Vector2 lookValue)
         {
-            
-            Debug.Log($"{_nickname} is looking");
+            _cameraRig.transform.Rotate(lookValue.y, lookValue.x, 0);
         }
     }
 }
