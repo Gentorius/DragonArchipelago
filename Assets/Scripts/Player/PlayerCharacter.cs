@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.AI;
 
 namespace Player
 {
@@ -15,25 +16,36 @@ namespace Player
     public class PlayerCharacter : MonoBehaviour, IPlayerCharacter
     {
         string _nickname;
+        bool _isRotationSynced;
+        bool _isWarped;
         
         [SerializeField]
         GameObject _cameraRig;
         [SerializeField]
-        Rigidbody _rigidbody;
-        
+        NavMeshAgent _navMeshAgent;
 
         public void Initialize(PlayerInfo playerInfo)
         {
             _nickname = playerInfo.Nickname;
         }
-        
+
         public void Move(Vector2 moveValue)
         {
-            transform.forward = _cameraRig.transform.forward;
-            transform.right = _cameraRig.transform.right;
+            if (!_isWarped)
+            {
+                _navMeshAgent.Warp(transform.position);
+                _isWarped = true;
+            }
             
-            var moveVector = new Vector3(moveValue.x, 0, moveValue.y);
-            _rigidbody.transform.Translate(moveVector);
+            if (!_isRotationSynced)
+            {
+                _cameraRig.transform.rotation = transform.rotation;
+                _isRotationSynced = true;
+            }
+            
+            var destination = transform.position + new Vector3(moveValue.x * 5, 0, moveValue.y * 5);
+            
+            _navMeshAgent.SetDestination(destination);
         }
         
         public void Jump()
@@ -54,6 +66,7 @@ namespace Player
         public void Look(Vector2 lookValue)
         {
             _cameraRig.transform.Rotate(lookValue.y, lookValue.x, 0);
+            _isRotationSynced = false;
         }
     }
 }
