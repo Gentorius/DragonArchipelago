@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -5,7 +6,7 @@ namespace Player
 {
     public interface IPlayerCharacter
     {
-        void Initialize(PlayerInfo playerInfo);
+        UniTask Initialize(PlayerInfo playerInfo);
         void Move(Vector2 moveValue);
         void Jump();
         void Attack();
@@ -17,26 +18,27 @@ namespace Player
     {
         string _nickname;
         bool _isRotationSynced;
-        bool _isWarped;
         
         [SerializeField]
         GameObject _cameraRig;
         [SerializeField]
         NavMeshAgent _navMeshAgent;
 
-        public void Initialize(PlayerInfo playerInfo)
+        public async UniTask Initialize(PlayerInfo playerInfo)
         {
             _nickname = playerInfo.Nickname;
+
+            while (!_navMeshAgent.isOnNavMesh)
+            {
+                await UniTask.NextFrame();
+            }
+            
+            _navMeshAgent.Warp(transform.position);
+            _navMeshAgent.updateRotation = false;
         }
 
         public void Move(Vector2 moveValue)
         {
-            if (!_isWarped)
-            {
-                _navMeshAgent.Warp(transform.position);
-                _isWarped = true;
-            }
-            
             if (!_isRotationSynced)
             {
                 _cameraRig.transform.rotation = transform.rotation;
@@ -66,6 +68,7 @@ namespace Player
         public void Look(Vector2 lookValue)
         {
             _cameraRig.transform.Rotate(lookValue.y, lookValue.x, 0);
+            _cameraRig.transform.rotation = Quaternion.Euler(_cameraRig.transform.rotation.eulerAngles.x, _cameraRig.transform.rotation.eulerAngles.y, 0);
             _isRotationSynced = false;
         }
     }
