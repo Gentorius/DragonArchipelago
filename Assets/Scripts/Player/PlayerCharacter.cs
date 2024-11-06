@@ -41,7 +41,10 @@ namespace Player
         {
             if (!_isRotationSynced)
             {
-                _cameraRig.transform.rotation = transform.rotation;
+                var cameraRotation = _cameraRig.transform.rotation;
+                var rotateTo = Quaternion.LookRotation(new Vector3(0, cameraRotation.y, 0));
+                transform.rotation = rotateTo;
+                _cameraRig.transform.rotation = cameraRotation;
                 _isRotationSynced = true;
             }
             

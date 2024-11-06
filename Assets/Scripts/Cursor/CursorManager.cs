@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace Cursor
@@ -16,6 +17,12 @@ namespace Cursor
                 UnityEngine.Cursor.lockState = CursorLockMode.None;
                 UnityEngine.Cursor.visible = true;
             }
+        }
+
+        void OnApplicationQuit()
+        {
+            UnityEngine.Cursor.lockState = CursorLockMode.None;
+            UnityEngine.Cursor.visible = true;
         }
     }
 }
