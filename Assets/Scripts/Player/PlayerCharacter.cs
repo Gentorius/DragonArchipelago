@@ -41,14 +41,14 @@ namespace Player
         {
             if (!_isRotationSynced)
             {
-                var cameraRotation = _cameraRig.transform.rotation;
-                var rotateTo = Quaternion.LookRotation(new Vector3(0, cameraRotation.y, 0));
-                transform.rotation = rotateTo;
+                var cameraRotation = new Quaternion(_cameraRig.transform.rotation.x, _cameraRig.transform.rotation.y, 0, _cameraRig.transform.rotation.w);
+                var rotateTo = new Quaternion(0, cameraRotation.y, 0, cameraRotation.w);
+                _navMeshAgent.transform.rotation = rotateTo;
                 _cameraRig.transform.rotation = cameraRotation;
                 _isRotationSynced = true;
             }
             
-            var destination = transform.position + new Vector3(moveValue.x * 5, 0, moveValue.y * 5);
+            var destination = CalculateDestination(moveValue);
             
             _navMeshAgent.SetDestination(destination);
         }
@@ -72,6 +72,14 @@ namespace Player
         {
             _cameraRig.Look(lookValue);
             _isRotationSynced = false;
+        }
+        
+        Vector3 CalculateDestination(Vector2 moveValue)
+        {
+            var forward = transform.forward * (moveValue.y * 5);
+            var right = transform.right * (moveValue.x * 5);
+            var destination = transform.position + forward + right;
+            return destination;
         }
     }
 }
