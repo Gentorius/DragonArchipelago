@@ -52,7 +52,9 @@
     <Compile Include="Assets\Scripts\Bootstrap\Bootstrap.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
+    <Compile Include="Assets\Scripts\Cursor\CursorManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\Player\CameraRig.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />
     <Compile Include="Assets\Scripts\ZenjectMonoInstaller\DragonInstaller.cs" />
     <None Include="Assets\Import\TerrainSampleAssets\ThirdPartyNotices.txt" />

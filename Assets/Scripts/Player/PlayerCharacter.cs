@@ -20,7 +20,7 @@ namespace Player
         bool _isRotationSynced;
         
         [SerializeField]
-        GameObject _cameraRig;
+        CameraRig _cameraRig;
         [SerializeField]
         NavMeshAgent _navMeshAgent;
 
@@ -67,8 +67,7 @@ namespace Player
         
         public void Look(Vector2 lookValue)
         {
-            _cameraRig.transform.Rotate(lookValue.y, lookValue.x, 0);
-            _cameraRig.transform.rotation = Quaternion.Euler(_cameraRig.transform.rotation.eulerAngles.x, _cameraRig.transform.rotation.eulerAngles.y, 0);
+            _cameraRig.Look(lookValue);
             _isRotationSynced = false;
         }
     }

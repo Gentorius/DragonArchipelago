@@ -155,7 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c70d52af09dd4be3a0a40c2722a80c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cameraRig: {fileID: 3655627333993713617}
+  _cameraRig: {fileID: 2437853699059322241}
   _navMeshAgent: {fileID: 4723780385738968852}
 --- !u!195 &4723780385738968852
 NavMeshAgent:
@@ -188,6 +188,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4002549296072257925}
+  - component: {fileID: 2437853699059322241}
   m_Layer: 0
   m_Name: CameraRig
   m_TagString: Untagged
@@ -211,6 +212,20 @@ Transform:
   - {fileID: 600190654179853920}
   m_Father: {fileID: 3275730596261573623}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2437853699059322241
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3655627333993713617}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85c10f19288c4d21bad7ea7b270f7e2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rotationUpLimit: 30
+  _rotationDownLimit: 330
 --- !u!1 &4725935593906210679
 GameObject:
   m_ObjectHideFlags: 0
