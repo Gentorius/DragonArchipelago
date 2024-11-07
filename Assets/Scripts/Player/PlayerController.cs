@@ -1,3 +1,4 @@
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -9,6 +10,7 @@ namespace Player
         readonly PlayerInfo _playerInfo;
         readonly IPlayerSpawner _playerSpawner;
         readonly IPlayerCharacter _playerCharacter;
+        CancellationTokenSource _cancellationTokenSource;
         
         InputAction _moveAction;
         InputAction _jumpAction;
@@ -20,7 +22,10 @@ namespace Player
         {
             _playerSpawner = playerSpawner;
             _playerInfo = new PlayerInfo();
-            _playerCharacter = _playerSpawner.SpawnPlayer(_playerInfo);
+            _cancellationTokenSource = new CancellationTokenSource();
+            var cancellationToken = _cancellationTokenSource.Token;
+            _playerCharacter = _playerSpawner.SpawnPlayer(_playerInfo, cancellationToken);
+            _playerCharacter.OnDestroyed += Dispose;
             
             _moveAction = InputSystem.actions.FindAction("Move");
             _jumpAction = InputSystem.actions.FindAction("Jump");
@@ -64,6 +69,15 @@ namespace Player
         {
             var lookValue = _lookAction.ReadValue<Vector2>();
             _playerCharacter.Look(lookValue);
+        }
+
+        void Dispose()
+        {
+            _cancellationTokenSource.Cancel();
+            _cancellationTokenSource.Dispose();
+            
+            if (_playerCharacter != null)
+                _playerCharacter.OnDestroyed -= Dispose;
         }
     }
     

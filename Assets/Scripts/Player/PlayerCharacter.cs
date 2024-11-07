@@ -1,3 +1,5 @@
+using System;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
@@ -6,7 +8,8 @@ namespace Player
 {
     public interface IPlayerCharacter
     {
-        UniTask Initialize(PlayerInfo playerInfo);
+        public event Action OnDestroyed;
+        
         void Move(Vector2 moveValue);
         void Jump();
         void Attack();
@@ -18,19 +21,28 @@ namespace Player
     {
         string _nickname;
         bool _isRotationSynced;
+        CancellationToken _cancellationToken;
         
         [SerializeField]
         CameraRig _cameraRig;
         [SerializeField]
         NavMeshAgent _navMeshAgent;
 
-        public async UniTask Initialize(PlayerInfo playerInfo)
+        public event Action OnDestroyed;
+
+        void OnDestroy()
+        {
+            OnDestroyed?.Invoke();
+        }
+
+        public async UniTask Initialize(PlayerInfo playerInfo, CancellationToken cancellationToken)
         {
             _nickname = playerInfo.Nickname;
+            _cancellationToken = cancellationToken;
 
             while (!_navMeshAgent.isOnNavMesh)
             {
-                await UniTask.NextFrame();
+                await UniTask.NextFrame(cancellationToken);
             }
             
             _navMeshAgent.Warp(transform.position);
@@ -40,17 +52,13 @@ namespace Player
         public void Move(Vector2 moveValue)
         {
             if (!_isRotationSynced)
-            {
-                var cameraRotation = new Quaternion(_cameraRig.transform.rotation.x, _cameraRig.transform.rotation.y, 0, _cameraRig.transform.rotation.w);
-                var rotateTo = new Quaternion(0, cameraRotation.y, 0, cameraRotation.w);
-                _navMeshAgent.transform.rotation = rotateTo;
-                _cameraRig.transform.rotation = cameraRotation;
-                _isRotationSynced = true;
-            }
+                StartRotationSynchronization();
             
             var destination = CalculateDestination(moveValue);
-            
             _navMeshAgent.SetDestination(destination);
+            
+            if (!_isRotationSynced)
+                FinishRotationSynchronization(_cancellationToken);
         }
         
         public void Jump()
@@ -80,6 +88,21 @@ namespace Player
             var right = transform.right * (moveValue.x * 5);
             var destination = transform.position + forward + right;
             return destination;
+        }
+
+        void StartRotationSynchronization()
+        {
+            _cameraRig.RememberRotation();
+            var rotateTo = new Quaternion(0, _cameraRig.transform.rotation.y, 0, _cameraRig.transform.rotation.w);
+            _navMeshAgent.transform.rotation = rotateTo;
+            _cameraRig.SynchronizeRotation();
+        }
+
+        async UniTask FinishRotationSynchronization(CancellationToken cancellationToken)
+        {
+            await UniTask.WaitUntil(() => _navMeshAgent.velocity.sqrMagnitude > 0.01f, cancellationToken: cancellationToken);
+            _cameraRig.RememberRotation().SynchronizeRotation();
+            _isRotationSynced = true;
         }
     }
 }

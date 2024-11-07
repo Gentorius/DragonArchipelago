@@ -9,6 +9,8 @@ namespace Player
         [SerializeField]
         float _rotationDownLimit = 330;
         
+        Quaternion _rememberedRotation;
+        
         public void Look(Vector2 lookValue)
         {
             transform.Rotate(lookValue.y, lookValue.x, 0);
@@ -25,6 +27,18 @@ namespace Player
             }
             
             transform.rotation = Quaternion.Euler(xRotation, transform.rotation.eulerAngles.y, 0);
+        }
+        
+        public CameraRig RememberRotation()
+        {
+            _rememberedRotation = transform.rotation;
+            return this;
+        }
+        
+        public void SynchronizeRotation()
+        {
+            var cameraSyncedRotation = Quaternion.Euler(_rememberedRotation.eulerAngles.x, _rememberedRotation.eulerAngles.y, 0);
+            transform.rotation = cameraSyncedRotation;
         }
     }
 }
