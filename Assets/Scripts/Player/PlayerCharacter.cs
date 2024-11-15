@@ -77,9 +77,10 @@ namespace Player
             if (_navMeshAgent.velocity.magnitude > 0)
                 jumpVelocity = _navMeshAgent.velocity.magnitude;
             
+            var moveDirection = _navMeshAgent.velocity.normalized;
             StopMoving();
             _navMeshAgent.enabled = false;
-            var jumpDirection = transform.forward * jumpVelocity;
+            var jumpDirection = moveDirection * jumpVelocity;
             _rigidbody.AddForce(new Vector3(jumpDirection.x, 5, jumpDirection.z), ForceMode.Impulse);
 
             await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y < 0, cancellationToken: cancellationToken);
