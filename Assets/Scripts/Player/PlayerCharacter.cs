@@ -11,7 +11,8 @@ namespace Player
         public event Action OnDestroyed;
         
         void Move(Vector2 moveValue);
-        void Jump();
+        void StopMoving();
+        UniTask Jump(CancellationToken cancellationToken);
         void Attack();
         void Interact();
         void Look(Vector2 lookValue);
@@ -27,6 +28,8 @@ namespace Player
         CameraRig _cameraRig;
         [SerializeField]
         NavMeshAgent _navMeshAgent;
+        [SerializeField]
+        Rigidbody _rigidbody;
 
         public event Action OnDestroyed;
 
@@ -60,10 +63,30 @@ namespace Player
             if (!_isRotationSynced)
                 FinishRotationSynchronization(_cancellationToken);
         }
-        
-        public void Jump()
+
+        public void StopMoving()
         {
-            Debug.Log($"{_nickname} is jumping");
+            _navMeshAgent.SetDestination(transform.position);
+        }
+
+        public async UniTask Jump(CancellationToken cancellationToken)
+        {
+            var jumpVelocity = 0.0f;
+            _rigidbody.isKinematic = false;
+            
+            if (_navMeshAgent.velocity.magnitude > 0)
+                jumpVelocity = _navMeshAgent.velocity.magnitude;
+            
+            StopMoving();
+            _navMeshAgent.enabled = false;
+            var jumpDirection = transform.forward * jumpVelocity;
+            _rigidbody.AddForce(new Vector3(jumpDirection.x, 5, jumpDirection.z), ForceMode.Impulse);
+
+            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y < 0, cancellationToken: cancellationToken);
+            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y > -0.1 && _rigidbody.linearVelocity.y < 0.1, cancellationToken: cancellationToken);
+            
+            _rigidbody.isKinematic = true;
+            _navMeshAgent.enabled = true;
         }
         
         public void Attack()

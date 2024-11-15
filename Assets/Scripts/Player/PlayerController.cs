@@ -7,24 +7,23 @@ namespace Player
 {
     public class PlayerController : IPlayerController
     {
-        readonly PlayerInfo _playerInfo;
-        readonly IPlayerSpawner _playerSpawner;
         readonly IPlayerCharacter _playerCharacter;
-        CancellationTokenSource _cancellationTokenSource;
+        readonly CancellationTokenSource _cancellationTokenSource;
+        CancellationToken CancellationToken => _cancellationTokenSource.Token;
+
+        readonly InputAction _moveAction;
+        readonly InputAction _jumpAction;
+        readonly InputAction _attackAction;
+        readonly InputAction _interactAction;
+        readonly InputAction _lookAction;
         
-        InputAction _moveAction;
-        InputAction _jumpAction;
-        InputAction _attackAction;
-        InputAction _interactAction;
-        InputAction _lookAction;
+        bool _isJumping;
         
         public PlayerController(IPlayerSpawner playerSpawner)
         {
-            _playerSpawner = playerSpawner;
-            _playerInfo = new PlayerInfo();
+            var playerInfo = new PlayerInfo();
             _cancellationTokenSource = new CancellationTokenSource();
-            var cancellationToken = _cancellationTokenSource.Token;
-            _playerCharacter = _playerSpawner.SpawnPlayer(_playerInfo, cancellationToken);
+            _playerCharacter = playerSpawner.SpawnPlayer(playerInfo, CancellationToken);
             _playerCharacter.OnDestroyed += Dispose;
             
             _moveAction = InputSystem.actions.FindAction("Move");
@@ -45,14 +44,20 @@ namespace Player
             while (_moveAction.IsPressed())
             {
                 var moveValue = _moveAction.ReadValue<Vector2>();
-                _playerCharacter.Move(moveValue);
+                
+                if(!_isJumping)
+                    _playerCharacter.Move(moveValue);
+                
                 await UniTask.NextFrame();
             }
+            _playerCharacter.StopMoving();
         }
         
-        void Jump()
+        async UniTask Jump()
         {
-            _playerCharacter.Jump();
+            _isJumping = true;
+            await _playerCharacter.Jump(CancellationToken);
+            _isJumping = false;
         }
         
         void Attack()
