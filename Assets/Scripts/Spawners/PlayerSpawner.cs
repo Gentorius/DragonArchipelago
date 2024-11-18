@@ -1,21 +1,22 @@
 using System.Threading;
+using Player;
 using ScriptableObjects;
 using UnityEngine;
 using Zenject;
 
-namespace Player
+namespace Spawners
 {
     public class PlayerSpawner : MonoBehaviour, IPlayerSpawner
     {
-        [Inject]
-        readonly BasicPrefabsAsset _playerPrefabsAsset;
+        [SerializeField]
+        BasicPrefabsAsset _playerPrefabsAsset;
 
         public IPlayerCharacter SpawnPlayer(PlayerInfo playerInfo, CancellationToken cancellationToken)
         {
             var playerPrefab = _playerPrefabsAsset.GetRandomPrefab();
             var characterInScene = Instantiate(playerPrefab, transform.position, Quaternion.identity);
             var playerCharacter = characterInScene.GetComponent<PlayerCharacter>();
-            playerCharacter.Initialize(playerInfo, cancellationToken);
+            _ = playerCharacter.Initialize(playerInfo, cancellationToken);
             return playerCharacter;
         }
     }

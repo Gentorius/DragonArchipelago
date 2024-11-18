@@ -47,17 +47,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ScriptableObjects\ScriptableObjectInstallers\ScriptableObjectInstaller.cs" />
+    <Compile Include="Assets\Scripts\Spawners\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\ISpawnable.cs" />
     <Compile Include="Assets\UnityDefaultResources\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\SmallCraftObjects\Stick.cs" />
     <Compile Include="Assets\Scripts\Bootstrap\Bootstrap.cs" />
     <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
+    <Compile Include="Assets\Scripts\Spawners\BasicObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BasicPrefabsAsset.cs" />
-    <Compile Include="Assets\Scripts\Player\PlayerSpawner.cs" />
     <Compile Include="Assets\Scripts\Cursor\CursorManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInfo.cs" />
-    <Compile Include="Assets\Scripts\SmallCraftObjects\SmallObjectSpawner.cs" />
     <Compile Include="Assets\Scripts\Player\CameraRig.cs" />
     <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\IPickable.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />

@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ce3edf2d518ca844afaa586ea78eb66, type: 3}
-  m_Name: ScriptableObjectInstaller
+  m_Script: {fileID: 11500000, guid: 14588340a7ed4ab0b464a5dba5be3402, type: 3}
+  m_Name: SmallSpawnableObjects
   m_EditorClassIdentifier: 
-  _scriptableObjects:
-  - {fileID: 11400000, guid: 53aa437256217f84d86d7b0446be37e4, type: 2}
+  _items:
+  - {fileID: 7035347998650453691, guid: d111e1393154d914a96a01bc8e386605, type: 3}
