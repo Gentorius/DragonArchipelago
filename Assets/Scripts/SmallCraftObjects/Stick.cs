@@ -1,10 +1,10 @@
 using System;
-using CommonInterfaces;
+using CommonGameObjectInterfaces;
 using UnityEngine;
 
 namespace SmallCraftObjects
 {
-    public class Stick : MonoBehaviour, IInteractable
+    public class Stick : MonoBehaviour, IInteractable, IPickable, ISpawnable
     {
         public event Action OnInteracted;
         

@@ -1,6 +1,6 @@
 using System;
 
-namespace CommonInterfaces
+namespace CommonGameObjectInterfaces
 {
     public interface IInteractable
     {

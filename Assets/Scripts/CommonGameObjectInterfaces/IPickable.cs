@@ -1,4 +1,4 @@
-namespace CommonInterfaces
+namespace CommonGameObjectInterfaces
 {
     public interface IPickable
     {
