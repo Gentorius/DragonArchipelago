@@ -61,7 +61,7 @@ namespace Player
             _navMeshAgent.SetDestination(destination);
             
             if (!_isRotationSynced)
-                FinishRotationSynchronization(_cancellationToken);
+                _ = FinishRotationSynchronization(_cancellationToken);
         }
 
         public void StopMoving()
