@@ -1,6 +1,8 @@
 using System;
 using System.Threading;
+using CommonGameObjectParts;
 using Cysharp.Threading.Tasks;
+using Support;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -23,6 +25,7 @@ namespace Player
         string _nickname;
         bool _isRotationSynced;
         CancellationToken _cancellationToken;
+        IInteractable _highlightedInteractable;
         
         [SerializeField]
         CameraRig _cameraRig;
@@ -30,8 +33,28 @@ namespace Player
         NavMeshAgent _navMeshAgent;
         [SerializeField]
         Rigidbody _rigidbody;
+        [SerializeField]
+        TooltipManager _tooltipManager;
 
         public event Action OnDestroyed;
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (!other.TryGetComponent(out IInteractable interactable))
+                return;
+
+            _tooltipManager.RememberTooltip(interactable as InstantiatableEntity);
+            _highlightedInteractable = interactable;
+        }
+        
+        void OnTriggerExit(Collider other)
+        {
+            if (!other.TryGetComponent(out IInteractable interactable))
+                return;
+
+            _tooltipManager.ForgetTooltip(interactable as InstantiatableEntity);
+            _highlightedInteractable = null;
+        }
 
         void OnDestroy()
         {
@@ -97,7 +120,7 @@ namespace Player
         
         public void Interact()
         {
-            Debug.Log($"{_nickname} is interacting");
+            _highlightedInteractable?.Interact();
         }
         
         public void Look(Vector2 lookValue)

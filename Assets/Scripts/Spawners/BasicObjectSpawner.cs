@@ -1,6 +1,9 @@
 using System.Linq;
+using CommonGameObjectParts;
 using ScriptableObjects;
 using UnityEngine;
+using Utility;
+using Zenject;
 using Random = UnityEngine.Random;
 
 namespace Spawners
@@ -15,6 +18,9 @@ namespace Spawners
         int _maxObjects = 10;
         [SerializeField]
         float _spawnRadius = 10f;
+        
+        [Inject]
+        IIDManager _idManager;
         
         Terrain _terrain;
 
@@ -33,7 +39,6 @@ namespace Spawners
         void SpawnObjects()
         {
             var randomObjectsCount = Random.Range(1, _maxObjects);
-            Debug.Log($"Spawning {randomObjectsCount} objects");
             for (var i = 0; i < randomObjectsCount; i++)
             {
                 SpawnObject();
@@ -46,7 +51,10 @@ namespace Spawners
             var spawnPosition = GetRandomPositionWithinRadius();
             var rotation = CalculateRotationBasedOnTerrain(spawnPosition);
             spawnPosition = AdjustObjectSpawnHeight(objectPrefab, spawnPosition);
-            return Instantiate(objectPrefab, spawnPosition, rotation);
+            var instantiatedObject = Instantiate(objectPrefab, spawnPosition, rotation);
+            var instantiatableEntity = instantiatedObject.GetComponent<InstantiatableEntity>();
+            instantiatableEntity.EntityID = _idManager.GetUniqueID();
+            return instantiatedObject;
         }
         
         Vector3 GetRandomPositionWithinRadius()

@@ -47,22 +47,27 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\ScriptableObjects\ScriptableObjectInstallers\ScriptableObjectInstaller.cs" />
+    <Compile Include="Assets\Scripts\Support\Tooltip.cs" />
     <Compile Include="Assets\Scripts\Spawners\PlayerSpawner.cs" />
-    <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\ISpawnable.cs" />
     <Compile Include="Assets\UnityDefaultResources\TutorialInfo\Scripts\Readme.cs" />
     <Compile Include="Assets\Scripts\SmallCraftObjects\Stick.cs" />
     <Compile Include="Assets\Scripts\Bootstrap\Bootstrap.cs" />
-    <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\IInteractable.cs" />
+    <Compile Include="Assets\Scripts\CommonGameObjectParts\IInteractable.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerController.cs" />
     <Compile Include="Assets\Scripts\Spawners\BasicObjectSpawner.cs" />
+    <Compile Include="Assets\Scripts\Utility\IDManager.cs" />
     <Compile Include="Assets\Scripts\ScriptableObjects\BasicPrefabsAsset.cs" />
+    <Compile Include="Assets\Scripts\Utility\IIDManager.cs" />
     <Compile Include="Assets\Scripts\Cursor\CursorManager.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerInfo.cs" />
+    <Compile Include="Assets\Scripts\CommonGameObjectParts\ISpawnable.cs" />
+    <Compile Include="Assets\Scripts\Support\TooltipManager.cs" />
     <Compile Include="Assets\Scripts\Player\CameraRig.cs" />
-    <Compile Include="Assets\Scripts\CommonGameObjectInterfaces\IPickable.cs" />
+    <Compile Include="Assets\Scripts\CommonGameObjectParts\InstantiatableEntity.cs" />
     <Compile Include="Assets\Scripts\Player\PlayerCharacter.cs" />
     <Compile Include="Assets\Scripts\ZenjectMonoInstaller\DragonInstaller.cs" />
     <Compile Include="Assets\Scripts\Player\Inventory\Inventory.cs" />
+    <Compile Include="Assets\Scripts\CommonGameObjectParts\IPickable.cs" />
     <None Include="Assets\Import\TerrainSampleAssets\ThirdPartyNotices.txt" />
     <None Include="Assets\Import\TextMesh Pro\Shaders\TMPro.cginc" />
     <None Include="Assets\Import\TextMesh Pro\Shaders\TMP_SDF-Mobile Overlay.shader" />
