@@ -1,12 +1,9 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using CommonGameObjectParts;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.EventSystems;
 
 namespace Support
 {
@@ -27,19 +24,35 @@ namespace Support
             if (_tooltips.ContainsKey(entity))
                 return;
             
-            var tooltip = entity.GetComponentInChildren<Tooltip>();
-            _tooltips.Add(entity, tooltip);
+            var tooltip = entity.GetComponentInChildren<Tooltip>(true);
             
+            if (tooltip == null)
+            {
+                Debug.LogWarning($"No tooltip found for {entity.name}");
+                return;
+            }
+
+            _tooltips.Add(entity, tooltip);
+            TriggerIfCentered(entity, this.GetCancellationTokenOnDestroy()).Forget();
         }
 
         public void ForgetTooltip(InstantiatableEntity entity)
         {
+            if (!_tooltips.TryGetValue(entity, out var tooltip))
+                return;
+
+            tooltip.HideTooltip();
             _tooltips.Remove(entity);
         }
 
-        async UniTask TriggerIfCentered(Tooltip tooltip, CancellationToken token)
+        async UniTask TriggerIfCentered(InstantiatableEntity entity, CancellationToken token)
         {
-            while (!token.IsCancellationRequested)
+            if (!_tooltips.TryGetValue(entity, out var tooltip))
+                return;
+            
+            while (!token.IsCancellationRequested 
+                   && entity != null 
+                   && _tooltips.ContainsKey(entity))
             {
                 if (IsObjectCenteredOnCamera(tooltip))
                 {
@@ -52,15 +65,15 @@ namespace Support
                 await UniTask.NextFrame();
             }
         }
-        
-        bool IsObjectCenteredOnCamera(Tooltip tooltip)
+
+        static bool IsObjectCenteredOnCamera(Tooltip tooltip)
         {
-            if (Camera.main == null)
+            if (Camera.allCameras.Length == 0)
                 return false;
-
-            var screenPoint = Camera.main.WorldToViewportPoint(tooltip.transform.position);
-            return screenPoint is { z: > 0, x: > 0 and < 1, y: > 0 and < 1 };
-
+            
+            var camera = Camera.allCameras[0];
+            var screenPoint = camera.WorldToViewportPoint(tooltip.transform.position);
+            return screenPoint is { z: > 0, x: > 0.45f and < 0.55f, y: > 0.45f and < 0.55f };
         }
     }
 }

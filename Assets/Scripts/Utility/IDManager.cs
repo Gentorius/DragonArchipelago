@@ -7,6 +7,11 @@ namespace Utility
         static int _nextID;
         readonly List<int> _returnedIDs = new();
         
+        public IDManager()
+        {
+            _nextID = 0;
+        }
+        
         public int GetUniqueID()
         {
             if (_returnedIDs.Count <= 0)
