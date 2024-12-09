@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6587286458032446164}
   - component: {fileID: 1016646293097781791}
   - component: {fileID: 4925441289365080548}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -120,7 +120,7 @@ GameObject:
   - component: {fileID: 8293096666001198326}
   - component: {fileID: 1702592784042543836}
   - component: {fileID: 997003843025334534}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -228,7 +228,7 @@ GameObject:
   - component: {fileID: 6018345395504233958}
   - component: {fileID: 6162540582443826391}
   - component: {fileID: 3840121172100976387}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Stick
   m_TagString: Interactable
   m_Icon: {fileID: 0}
@@ -327,7 +327,7 @@ GameObject:
   - component: {fileID: 8348113124956644051}
   - component: {fileID: 6659948314343951248}
   - component: {fileID: 1923484891066071406}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Cube (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,10 +436,25 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: -0.07
       objectReference: {fileID: 0}
+    - target: {fileID: 2607043723402092798, guid: 3089d67ebd106534ca58ebe035c8984d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2682886832740160963, guid: 3089d67ebd106534ca58ebe035c8984d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 4202416287458448943, guid: 3089d67ebd106534ca58ebe035c8984d,
         type: 3}
       propertyPath: m_Name
       value: Tooltip
+      objectReference: {fileID: 0}
+    - target: {fileID: 4202416287458448943, guid: 3089d67ebd106534ca58ebe035c8984d,
+        type: 3}
+      propertyPath: m_Layer
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4483638398628153976, guid: 3089d67ebd106534ca58ebe035c8984d,
         type: 3}

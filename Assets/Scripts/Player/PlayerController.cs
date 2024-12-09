@@ -51,11 +51,16 @@ namespace Player
                 
                 await UniTask.NextFrame();
             }
-            _playerCharacter.StopMoving();
+            
+            if (!_isJumping)
+                _playerCharacter.StopMoving();
         }
         
         async UniTask Jump()
         {
+            if (_isJumping)
+                return;
+            
             _isJumping = true;
             await _playerCharacter.Jump(CancellationToken);
             _isJumping = false;

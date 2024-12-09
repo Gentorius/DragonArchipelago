@@ -46,13 +46,11 @@ namespace Support
         {
             gameObject.SetActive(true);
             RotateTowardsCamera();
-            Debug.Log("Showing tooltip");
         }
         
         public void HideTooltip()
         {
             gameObject.SetActive(false);
-            Debug.Log("Hiding tooltip");
         }
         
         void RotateTowardsCamera()

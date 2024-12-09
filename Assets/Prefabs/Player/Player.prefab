@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7280192464457799590}
   - component: {fileID: 1265286383897223867}
   - component: {fileID: 970547779674727614}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: InteractableVolume
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -83,7 +83,7 @@ GameObject:
   - component: {fileID: 2792104748116464737}
   - component: {fileID: 8144645056279014197}
   - component: {fileID: 1378218227385188085}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 643663234936037094}
   - component: {fileID: 6053108367209257722}
   - component: {fileID: 6204031793361457273}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -234,7 +234,6 @@ MonoBehaviour:
   _navMeshAgent: {fileID: 4723780385738968852}
   _rigidbody: {fileID: 643663234936037094}
   _tooltipManager: {fileID: 6053108367209257722}
-  _interactCollider: {fileID: 1265286383897223867}
 --- !u!195 &4723780385738968852
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -282,7 +281,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 1
   m_Interpolate: 0
-  m_Constraints: 0
+  m_Constraints: 80
   m_CollisionDetection: 0
 --- !u!114 &6053108367209257722
 MonoBehaviour:
@@ -296,7 +295,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd3f012e9b446b3ad21c2a293edba6d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _eventTrigger: {fileID: 6204031793361457273}
 --- !u!114 &6204031793361457273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +318,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4002549296072257925}
   - component: {fileID: 2437853699059322241}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: CameraRig
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -369,7 +367,7 @@ GameObject:
   - component: {fileID: 4410721179495834469}
   - component: {fileID: 1813700193600609972}
   - component: {fileID: 1999763201225924209}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Camera
   m_TagString: Player
   m_Icon: {fileID: 0}

@@ -26,6 +26,8 @@ namespace Player
         bool _isRotationSynced;
         CancellationToken _cancellationToken;
         IInteractable _highlightedInteractable;
+        const float CancelJumpThreshold = 0.14f;
+        const string IgnoreLayer = "MinorObject";
         
         [SerializeField]
         CameraRig _cameraRig;
@@ -77,6 +79,9 @@ namespace Player
 
         public void Move(Vector2 moveValue)
         {
+            if (!_navMeshAgent.enabled)
+                return;
+            
             if (!_isRotationSynced)
                 StartRotationSynchronization();
             
@@ -104,15 +109,18 @@ namespace Player
             StopMoving();
             _navMeshAgent.enabled = false;
             var jumpDirection = moveDirection * jumpVelocity;
-            _rigidbody.AddForce(new Vector3(jumpDirection.x, 5, jumpDirection.z), ForceMode.Impulse);
+            var ignoreLayer = LayerMask.NameToLayer(IgnoreLayer);
+            Physics.IgnoreLayerCollision(gameObject.layer, ignoreLayer, true);
+            _rigidbody.AddForce(new Vector3(jumpDirection.x, 7, jumpDirection.z), ForceMode.Impulse);
 
-            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y < 0, cancellationToken: cancellationToken);
-            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y > -0.1 && _rigidbody.linearVelocity.y < 0.1, cancellationToken: cancellationToken);
+            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y < -CancelJumpThreshold, cancellationToken: cancellationToken);
+            await UniTask.WaitUntil(() => _rigidbody.linearVelocity.y is > -CancelJumpThreshold and < CancelJumpThreshold, cancellationToken: cancellationToken);
             
+            Physics.IgnoreLayerCollision(gameObject.layer, ignoreLayer, false);
             _rigidbody.isKinematic = true;
             _navMeshAgent.enabled = true;
         }
-        
+
         public void Attack()
         {
             Debug.Log($"{_nickname} is attacking");
